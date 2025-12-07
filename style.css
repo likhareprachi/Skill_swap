@@ -1,0 +1,157 @@
+/* FILE: style.css */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --bg-gradient: linear-gradient(135deg, #134e5e 0%, #71b280 100%);
+    /* Deep Teal to Mint Green */
+    --accent-teal: #14b8a6;
+    /* Teal 500 */
+    --accent-blue: #0ea5e9;
+    /* Sky 500 */
+    --glass-bg: rgba(255, 255, 255, 0.95);
+    /* More opaque white for cards */
+    --glass-border: rgba(255, 255, 255, 1);
+    --text-primary: #0f172a;
+    /* Slate 900 */
+    --text-white: #ffffff;
+}
+
+body {
+    background: var(--bg-gradient);
+    background-attachment: fixed;
+    /* Keep gradient fixed on scroll */
+    color: var(--text-primary);
+    font-family: 'Space Grotesk', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* Remove Floating Orbs - Replacing with smooth gradient overlay if needed */
+.orb {
+    display: none;
+}
+
+/* Utility: Text Colors Override for Dark Background */
+.text-on-gradient {
+    color: var(--text-white) !important;
+}
+
+/* Glassmorphism Utilities Updated */
+.glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+}
+
+.glass-card {
+    background: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 1);
+    border-radius: 20px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.glass-input {
+    background: #ffffff;
+    border: 2px solid transparent;
+    color: var(--text-primary);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.glass-input:focus {
+    outline: none;
+    border-color: var(--accent-teal);
+    box-shadow: 0 0 0 4px rgba(20, 184, 166, 0.2);
+}
+
+.glass-btn {
+    background: linear-gradient(135deg, var(--accent-teal), #0d9488);
+    border: none;
+    color: white;
+    box-shadow: 0 4px 15px rgba(20, 184, 166, 0.4);
+    transition: all 0.3s ease;
+}
+
+.glass-btn:hover {
+    filter: brightness(1.1);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(20, 184, 166, 0.5);
+}
+
+/* Floating Labels - Updated colors */
+.floating-label-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.floating-label-group input {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.floating-label-group label {
+    position: absolute;
+    top: 50%;
+    left: 16px;
+    transform: translateY(-50%);
+    color: #64748b;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    background: transparent;
+    padding: 0 4px;
+}
+
+.floating-label-group input:focus+label,
+.floating-label-group input:not(:placeholder-shown)+label {
+    top: 0;
+    font-size: 0.8rem;
+    color: var(--accent-teal);
+    background: white;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
